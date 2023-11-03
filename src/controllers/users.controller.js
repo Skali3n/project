@@ -1,14 +1,14 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from 'express';
+import validateUser from '../dto/user-create.dto.js';
 
-const validateUser = require("../dto/user-create.dto");
+export const router = Router();
 
-class UsersController {
+export class UsersController {
   constructor(usersService) {
     this.usersService = usersService;
 
-    router.post("/", validateUser, this.postUser);
-    router.get("/", this.getUsers);
+    router.post('/', validateUser, this.postUser);
+    router.get('/', this.getUsers);
   }
 
   postUser = async (req, res, next) => {
@@ -36,5 +36,3 @@ class UsersController {
     }
   };
 }
-
-module.exports = { UsersController, usersRouter: router };

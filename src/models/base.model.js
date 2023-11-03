@@ -1,4 +1,4 @@
-const { v4: uuid } = require("uuid");
+import { v4 as uuid } from 'uuid';
 
 class BaseModel {
   _id = uuid();
@@ -8,4 +8,4 @@ class BaseModel {
   constructor() {}
 }
 
-module.exports = BaseModel;
+export default BaseModel;

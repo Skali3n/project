@@ -1,10 +1,9 @@
-const BaseRepository = require("./base.repository");
-const UserModel = require("../models/user.model");
+import BaseRepository from './base.repository.js';
+import UserModel from '../models/user.model.js';
 
 class UsersRepository extends BaseRepository {
   constructor() {
-    super();
-    this._dataFilePath = "../../database/users.json";
+    super('../../database/users.json');
     this._initialize();
   }
 
@@ -23,4 +22,4 @@ class UsersRepository extends BaseRepository {
   }
 }
 
-module.exports = UsersRepository;
+export default UsersRepository;

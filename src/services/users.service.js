@@ -4,7 +4,7 @@ class UsersService {
   }
 
   createUser(input) {
-    console.log("Creating user with input:", input);
+    console.log('Creating user with input:', input);
 
     const user = this.usersRepository.createUser(input);
 
@@ -15,7 +15,7 @@ class UsersService {
   }
 
   getUsers() {
-    console.log("Getting users");
+    console.log('Getting users');
 
     const users = this.usersRepository.selectUsers();
 
@@ -31,4 +31,4 @@ class UsersService {
   }
 }
 
-module.exports = UsersService;
+export default UsersService;

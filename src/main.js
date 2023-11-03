@@ -1,15 +1,15 @@
-const express = require("express");
-const config = require("./config/app.config");
+import express, { json } from 'express';
+import config from './config/app.config.js';
 
-const { UsersController, usersRouter } = require("./controllers/users.controller");
-const UsersService = require("./services/users.service");
-const UsersRepository = require("./repositories/users.repository");
+import { UsersController, router as usersRouter } from './controllers/users.controller.js';
+import UsersService from './services/users.service.js';
+import UsersRepository from './repositories/users.repository.js';
 
 new UsersController(new UsersService(new UsersRepository()));
 
 const app = express();
 
-app.use(express.json());
+app.use(json());
 app.use(usersRouter);
 
 app.listen(config.app.port, () => {

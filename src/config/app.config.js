@@ -1,5 +1,5 @@
-require("dotenv").config();
-const { env } = require("process");
+import 'dotenv/config';
+import { env } from 'process';
 
 const config = {
   app: {
@@ -7,4 +7,4 @@ const config = {
   },
 };
 
-module.exports = config;
+export default config;
