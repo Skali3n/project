@@ -1,5 +1,5 @@
 const fs = require('fs');
-const dataFilePath = './users.json';
+const dataFilePath = ('./users.json');
 
 class UserService {
   static getUsersData() {
