@@ -1,4 +1,3 @@
-const path = require('path');
 const fs = require('fs');
 
 class User {
@@ -15,11 +14,7 @@ class User {
 
   create = (firstName, lastName, email, password, roleId) => {
     try {
-      const usersFilePath = path.join(__dirname, '..', 'data', 'users.json');
-      let users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-      if (!Array.isArray(users)) {
-        users = [];
-      }
+      const users = JSON.parse(fs.readFileSync('./users.json', 'utf8'));
       const userId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
 
       const user = {
@@ -34,7 +29,7 @@ class User {
       };
 
       users.push(user);
-      fs.writeFileSync('./data/users.json', JSON.stringify(users), 'utf-8');
+      fs.writeFileSync('./users.json', JSON.stringify(users), 'utf8');
 
       return user;
     } catch (error) {
@@ -48,7 +43,7 @@ class User {
   }
 
   get role() {
-    const roles = JSON.parse(fs.readFileSync('./data/roles.json', 'utf-8'));
+    const roles = JSON.parse(fs.readFileSync('./roles.json', 'utf8'));
 
     return roles.find((role) => role.id === this.roleId);
   }

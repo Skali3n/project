@@ -31,7 +31,7 @@ app.post('/users', (req, res) => {
   const user = new User();
 
   try {
-    const roles = JSON.parse(fs.readFileSync('./data/roles.json', 'utf8'));
+    const roles = JSON.parse(fs.readFileSync('./roles.json', 'utf8'));
     const role = roles.find((role) => role.id === input.roleId);
 
     if (!role) {

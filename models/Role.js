@@ -1,4 +1,3 @@
-const path = require('path');
 const fs = require('fs');
 
 class Role {
@@ -11,11 +10,7 @@ class Role {
 
   create = (title) => {
     try {
-        const usersFilePath = path.join(__dirname, '..', 'data', 'roles.json');
-        let users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-        if (!Array.isArray(roles)) {
-          roles = [];
-        }  
+      const roles = JSON.parse(fs.readFileSync('./roles.json', 'utf8'));
       const roleId = roles.length > 0 ? roles[roles.length - 1].id + 1 : 1;
 
       const role = {
@@ -26,12 +21,11 @@ class Role {
       };
 
       roles.push(role);
-      fs.writeFileSync('./data/roles.json', JSON.stringify(roles), 'utf-8');
+      fs.writeFileSync('./roles.json', JSON.stringify(roles), 'utf8');
     } catch (error) {
       console.error('Error while creating role:', error);
     }
-  }
+  };
 }
-
 
 module.exports = Role;
