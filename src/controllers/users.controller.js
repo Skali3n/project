@@ -11,7 +11,7 @@ export class UsersController {
     router.get('/', this.getUsers);
   }
 
-  postUser = async (req, res, next) => {
+  async postUser(req, res, next) {
     try {
       const input = req.body;
       const user = await this.usersService.createUser(input);
@@ -22,9 +22,9 @@ export class UsersController {
 
       next(err);
     }
-  };
+  }
 
-  getUsers = async (req, res, next) => {
+  async getUsers(req, res, next) {
     try {
       const users = await this.usersService.getUsers();
 
@@ -34,5 +34,5 @@ export class UsersController {
 
       next(err);
     }
-  };
+  }
 }

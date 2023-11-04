@@ -5,14 +5,12 @@ import { fileURLToPath } from 'url';
 const getCurrentDirectoryName = () => dirname(fileURLToPath(import.meta.url));
 
 class BaseRepository {
-  _dataFilePath;
-
   constructor(dataFilePath) {
     this._dataFilePath = dataFilePath;
     this._initialize();
   }
 
-  _initialize = () => {
+  _initialize() {
     try {
       console.log(`Initializing ${this.constructor.name}...`);
 
@@ -24,7 +22,7 @@ class BaseRepository {
     } catch (error) {
       console.error('Error while initializing repo:', error);
     }
-  };
+  }
 
   _fetchData() {
     const dir = getCurrentDirectoryName();
