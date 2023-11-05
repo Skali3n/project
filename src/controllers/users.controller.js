@@ -26,7 +26,7 @@ export class UsersController {
     }
   }
 
-  async getUsers(req, res, next) {
+  async getUsers(_, res, next) {
     try {
       const users = await this.#usersService.getUsers();
 

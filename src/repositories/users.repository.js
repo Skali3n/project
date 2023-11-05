@@ -4,7 +4,6 @@ import UserModel from '../models/user.model.js';
 class UsersRepository extends BaseRepository {
   constructor() {
     super('../../database/users.json');
-    this._initialize();
   }
 
   createUser(input) {
