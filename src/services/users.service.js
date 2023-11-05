@@ -1,12 +1,14 @@
 class UsersService {
+  #usersRepository;
+
   constructor(usersRepository) {
-    this.usersRepository = usersRepository;
+    this.#usersRepository = usersRepository;
   }
 
   createUser(input) {
     console.log('Creating user with input:', input);
 
-    const user = this.usersRepository.createUser(input);
+    const user = this.#usersRepository.createUser(input);
 
     return {
       fullName: user.fullName,
@@ -17,7 +19,7 @@ class UsersService {
   getUsers() {
     console.log('Getting users');
 
-    const users = this.usersRepository.selectUsers();
+    const users = this.#usersRepository.selectUsers();
 
     const mappedUsers = users.map((user) => ({
       fullName: user.fullName,
