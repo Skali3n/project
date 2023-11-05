@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import validateUser from '../dto/user-create.dto.js';
+import { validateUser } from '../dto/index.js';
 
 export const router = Router();
 

@@ -1,9 +1,9 @@
 import express, { json } from 'express';
 import config from './config/app.config.js';
 
-import { UsersController, router as usersRouter } from './controllers/users.controller.js';
-import UsersService from './services/users.service.js';
-import UsersRepository from './repositories/users.repository.js';
+import { UsersController, usersRouter } from './controllers/index.js';
+import { UsersService } from './services/index.js';
+import { UsersRepository } from './repositories/index.js';
 
 // Initialize the controller with the service and repository
 new UsersController(new UsersService(new UsersRepository()));
