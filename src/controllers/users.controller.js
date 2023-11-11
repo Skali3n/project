@@ -4,19 +4,19 @@ import { validateUser } from '../dto/index.js';
 export const router = Router();
 
 export class UsersController {
-  _usersService;
+  #usersService;
 
   constructor(usersService) {
-    this._usersService = usersService;
+    this.#usersService = usersService;
 
-    router.post('/', validateUser, this.postUser);
-    router.get('/', this.getUsers);
+    router.post('/', validateUser, this.postUser.bind(this));
+    router.get('/', this.getUsers.bind(this));
   }
 
   async postUser(req, res, next) {
     try {
       const input = req.body;
-      const user = await this._usersService.createUser(input);
+      const user = this.#usersService.createUser(input);
 
       res.status(201).json(user);
     } catch (err) {
@@ -28,7 +28,7 @@ export class UsersController {
 
   async getUsers(_, res, next) {
     try {
-      const users = await this._usersService.getUsers();
+      const users = this.#usersService.getUsers();
 
       res.status(200).json(users);
     } catch (err) {
