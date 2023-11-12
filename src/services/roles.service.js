@@ -1,3 +1,5 @@
+import RoleRepository from '../repositories/index.js';
+
 class RoleService {
   #roleRepository;
 
