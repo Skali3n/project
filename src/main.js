@@ -4,13 +4,9 @@ import config from './config/app.config.js';
 import { UsersController, usersRouter } from './controllers/index.js';
 import { UsersService } from './services/index.js';
 import { UsersRepository } from './repositories/index.js';
+import { RoleRepository } from './repositories/index.js';
 
-// Initialize the controller with the service and repository
-new UsersController(new UsersService(new UsersRepository()));
-// Same as:
-// const usersRepository = new UsersRepository();
-// const usersService = new UsersService(usersRepository);
-// const usersController = new UsersController(usersService);
+new UsersController(new UsersService(new UsersRepository(), new RoleRepository()));
 
 const app = express();
 

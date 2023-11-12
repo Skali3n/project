@@ -1,8 +1,12 @@
+import RoleService from './roles.service.js';
+
 class UsersService {
   #usersRepository;
+  #roleService;
 
-  constructor(usersRepository) {
+  constructor(usersRepository, roleService) {
     this.#usersRepository = usersRepository;
+    this.#roleService = roleService;
   }
 
   createUser(input) {
@@ -10,10 +14,22 @@ class UsersService {
 
     const user = this.#usersRepository.createUser(input);
 
-    return {
-      fullName: user.fullName,
-      email: user.email,
-    };
+    if (typeof this.#roleService.getUserRoles === 'function') {
+      const userRoles = this.#roleService.getUserRoles(user.id);
+
+      return {
+        fullName: user.fullName,
+        email: user.email,
+        roles: userRoles,
+      };
+    } else {
+      console.error('getUserRoles method is not defined in RoleService');
+      return {
+        fullName: user.fullName,
+        email: user.email,
+        roles: [],
+      };
+    }
   }
 
   getUsers() {
@@ -24,6 +40,7 @@ class UsersService {
     const mappedUsers = users.map((user) => ({
       fullName: user.fullName,
       email: user.email,
+      roles: this.#roleService.getUserRoles(user.id),
     }));
 
     return {
