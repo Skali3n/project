@@ -1,16 +1,11 @@
-import RoleRepository from '../repositories/index.js';
+import { RoleRepository } from '../repositories/index.js';
 
-class RoleService {
+class RolesService {
   #roleRepository;
 
-  constructor(roleRepository) {
-    this.#roleRepository = roleRepository;
+  constructor(RoleRepository) {
+    this.#roleRepository = RoleRepository;
   }
-
-  roles = [
-    { userId: 1, roleName: 'admin' },
-    { userId: 2, roleName: 'member' },
-  ];
 
   createRole(title) {
     const roleData = {
@@ -20,8 +15,7 @@ class RoleService {
   }
 
   getUserRole(userId) {
-    const userRoles = this.roles.filter((role) => role.userId === userId).map((role) => role.roleName);
-    return userRoles;
+    return this.#roleRepository.getUserRole(userId);
   }
 
   getAllRoles() {
@@ -29,4 +23,4 @@ class RoleService {
   }
 }
 
-export default RoleService;
+export default RolesService;

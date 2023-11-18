@@ -8,6 +8,7 @@ class UserModel extends BaseModel {
     this.lastName = input.lastName;
     this.email = input.email;
     this.password = input.password;
+    this.roleId = input.roleId;
   }
 
   get fullName() {

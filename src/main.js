@@ -3,10 +3,10 @@ import config from './config/app.config.js';
 
 import { UsersController, usersRouter } from './controllers/index.js';
 import { UsersService } from './services/index.js';
-import { UsersRepository } from './repositories/index.js';
-import { RoleRepository } from './repositories/index.js';
+import { RoleRepository, UsersRepository } from './repositories/index.js';
+import RolesService from './services/roles.service.js';
 
-new UsersController(new UsersService(new UsersRepository(), new RoleRepository()));
+new UsersController(new UsersService(new UsersRepository(), new RolesService(new RoleRepository())));
 
 const app = express();
 

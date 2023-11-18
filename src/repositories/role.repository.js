@@ -19,6 +19,12 @@ class RoleRepository extends BaseRepository {
 
     return roles.map((role) => new RoleModel(role));
   }
+
+  getUserRole(userId) {
+    const roles = this._fetchData();
+    const userRoles = roles.filter((role) => role.userId === userId).map((role) => role.roleName);
+    return userRoles;
+  }
 }
 
 export default RoleRepository;
