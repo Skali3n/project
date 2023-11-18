@@ -2,9 +2,13 @@ import BaseModel from './base.model.js';
 
 class RoleModel extends BaseModel {
   constructor(input) {
-    super();
+    super(input);
 
-    this.roleId = input.roleId;
+    this.title = input.title;
+  }
+
+  get roleId() {
+    return Number(this._id);
   }
 }
 

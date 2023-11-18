@@ -33,7 +33,7 @@ class UsersService {
     const mappedUsers = users.map((user) => ({
       fullName: user.fullName,
       email: user.email,
-      roles: this.#rolesService.getUserRole(user.roleId),
+      role: this.#rolesService.getUserRole(user.roleId),
     }));
 
     return {
